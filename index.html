@@ -1,319 +1,249 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Personal portfolio website." />
-    <title>Yeabsira | Portfolio</title>
-    <link rel="stylesheet" href="styles/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ethio-Scholar AI — scholarships and jobs aggregated for Ethiopian students."
+    />
+    <title>Ethio-Scholar AI | Scholarships &amp; Jobs</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-
     <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="#home" aria-label="Go to Home">
-          <span class="brand-mark" aria-hidden="true">YM</span>
-          <span class="brand-text">Yeabsira</span>
+      <nav class="navbar" aria-label="Primary">
+        <a
+          class="logo navbar-brand"
+          href="index.html"
+          aria-label="Ethio-Scholar AI home"
+        >
+          <span class="logo-mark" aria-hidden="true">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="32" height="32" rx="8" class="logo-shape" />
+              <path
+                d="M9 16.5L14 21.5L23 10.5"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="logo-text"
+            >Ethio-Scholar <span class="logo-ai">AI</span></span
+          >
         </a>
 
-        <nav class="nav" aria-label="Primary">
-          <a class="nav-link" href="#home">Home</a>
-          <a class="nav-link" href="#about">About Me</a>
-          <a class="nav-link" href="#projects">Projects</a>
-        </nav>
-      </div>
+        <ul class="navbar-links">
+          <li>
+            <a class="navbar-link" href="#opportunities">Opportunities</a>
+          </li>
+          <li>
+            <a class="navbar-link" href="#">Saved</a>
+          </li>
+          <li>
+            <a class="navbar-link" href="#">About</a>
+          </li>
+        </ul>
+
+        <form
+          class="search-form navbar-search"
+          role="search"
+          aria-label="Search opportunities"
+        >
+          <label class="visually-hidden" for="search-query"
+            >Search scholarships and jobs</label
+          >
+          <input
+            id="search-query"
+            class="search-input"
+            type="search"
+            name="q"
+            placeholder="Search scholarships, internships, jobs…"
+            autocomplete="off"
+          />
+          <button type="submit" class="search-submit">Search</button>
+        </form>
+      </nav>
     </header>
 
-    <main id="main">
-      <!-- HOME -->
-      <section id="home" class="hero" aria-label="Home">
-        <div class="container hero-inner">
-          <div class="hero-copy">
-            <p class="eyebrow">Front-End Developer</p>
-            <h1>
-              Building modern, accessible web experiences
-              <span class="gradient-text">with great UX</span>.
-            </h1>
-            <p class="lead">
-              I design and develop clean interfaces, durable components, and
-              performance-minded features. Here are a few projects I’m proud of.
-            </p>
-
-            <div class="hero-cta">
-              <a class="btn btn-primary" href="#projects">View Projects</a>
-              <a class="btn btn-ghost" href="#about">About Me</a>
-            </div>
-
-            <div class="hero-meta" role="list" aria-label="Highlights">
-              <div class="meta-item" role="listitem">
-                <div class="meta-title">Focus</div>
-                <div class="meta-value">UI, Accessibility</div>
-              </div>
-              <div class="meta-item" role="listitem">
-                <div class="meta-title">Tooling</div>
-                <div class="meta-value">HTML, CSS, JS</div>
-              </div>
-              <div class="meta-item" role="listitem">
-                <div class="meta-title">Style</div>
-                <div class="meta-value">Responsive &amp; Clean</div>
-              </div>
-            </div>
-          </div>
-
-          <aside class="hero-card" aria-label="Profile card">
-            <div class="avatar" aria-hidden="true">YM</div>
-            <h2 class="hero-card-title">Yeabsira</h2>
-            <p class="hero-card-subtitle">Available for freelance</p>
-            <div class="divider"></div>
-            <ul class="hero-card-list" aria-label="Quick facts">
-              <li>
-                <span class="k">Location</span>
-                <span class="v">Jimma, Ethiopia</span>
-              </li>
-              <li>
-                <span class="k">Email</span>
-                <span class="v">
-                  <a class="link" href="mailto:yeabsiramekonnen160@gmail.com"
-                    >yeabsiramekonnen160@gmail.com</a
-                  >
-                </span>
-              </li>
-              <li>
-                <span class="k">Currently</span>
-                <span class="v"
-                  >Studying Software Engineering and Aviation (AMT)</span
-                >
-              </li>
-            </ul>
-          </aside>
+    <main>
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-inner">
+          <p class="hero-eyebrow">Built for Ethiopian students</p>
+          <h1 id="hero-heading">Your Future, Managed by AI.</h1>
+          <p class="hero-lede">
+            Discover curated scholarships and roles matched to your field — one
+            place to plan your next step.
+          </p>
+          <a href="scholarship-page.html" class="view-projects-btn"
+            >View Projects</a
+          >
         </div>
       </section>
 
-      <!-- ABOUT -->
-      <section id="about" class="section" aria-label="About Me">
-        <div class="container">
-          <div class="section-head">
-            <h2>About Me</h2>
-            <p class="section-subtitle">
-              My name is Yeabsira. I am a Software Engineering student at Jimma
-              University with a passion for web development (HTML, CSS, Python).
-              I bring a safety-first, aviation-grade mindset to software
-              engineering, and I use problem-solving to build modern, reliable
-              experiences.
-            </p>
-          </div>
-
-          <div class="about-grid">
-            <div class="about-panel">
-              <h3>What I do</h3>
-              <p>
-                I build web interfaces with a focus on clean structure and
-                accessibility, using HTML and CSS, and I use Python to
-                strengthen my understanding of logic and data-driven problem
-                solving.
-              </p>
-              <p>
-                Most importantly, I have been accepted into the Ethiopian
-                Aviation University scholarship program to train as an Aircraft
-                Maintenance Technician (AMT).
-              </p>
-              <p>
-                That aviation journey shaped how I work: precision,
-                verification, and safety-first habits. In software, I combine
-                that discipline with the creativity of engineering—thinking
-                through failure points, improving quality, and shipping
-                solutions you can trust.
-              </p>
-            </div>
-
-            <div class="about-panel">
-              <h3>My values</h3>
-              <ul class="checklist" aria-label="Values">
-                <li>Safety-first thinking and meticulous quality checks</li>
-                <li>Precision, documentation, and repeatable processes</li>
-                <li>
-                  Problem solving with clarity, structure, and continuous
-                  improvement
-                </li>
-                <li>Modern, accessible web design that performs reliably</li>
-              </ul>
-
-              <div class="tag-row" aria-label="Skills">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">Python</span>
-                <span class="tag tag-soft">Web Development</span>
-                <span class="tag tag-soft">Software Engineering</span>
-                <span class="tag tag-soft">Aviation Safety</span>
-              </div>
-            </div>
-          </div>
+      <section class="filters-section" aria-labelledby="filters-heading">
+        <h2 id="filters-heading" class="section-title">Filter by category</h2>
+        <div class="filter-categories">
+          <button class="filter-btn active" data-category="all">All</button>
+          <button class="filter-btn" data-category="engineering">
+            Engineering
+          </button>
+          <button class="filter-btn" data-category="aviation">Aviation</button>
+          <button class="filter-btn" data-category="health">Health</button>
         </div>
       </section>
 
-      <!-- PROJECTS -->
-      <section id="projects" class="section section-alt" aria-label="Projects">
-        <div class="container">
-          <div class="section-head">
-            <h2>Projects</h2>
-            <p class="section-subtitle">
-              A small gallery of example work. Replace titles, descriptions, and
-              links with your own.
-            </p>
-          </div>
+      <section id="opportunities">
+        <h2>FEATURED OPPORTUNITIES</h2>
 
-          <div class="projects-grid" role="list" aria-label="Project gallery">
-            <article class="project-card" role="listitem">
-              <div class="project-top">
-                <h3 class="project-title">Aurora Landing Page</h3>
-                <span class="project-badge">UI</span>
-              </div>
-              <p class="project-desc">
-                A modern hero layout with responsive sections, clean typography,
-                and accessible navigation.
-              </p>
-              <div class="project-tags" aria-label="Technologies">
-                <span class="tag tag-soft">HTML</span>
-                <span class="tag tag-soft">CSS</span>
-              </div>
-              <div class="project-links">
-                <a class="btn btn-small btn-primary" href="#projects">Live</a>
-                <a class="btn btn-small btn-ghost" href="#projects">Code</a>
-              </div>
-            </article>
-
-            <article class="project-card" role="listitem">
-              <div class="project-top">
-                <h3 class="project-title">Component Kit</h3>
-                <span class="project-badge project-badge-warm"
-                  >Design System</span
-                >
-              </div>
-              <p class="project-desc">
-                A reusable set of card, button, and layout patterns built for
-                consistency across different pages.
-              </p>
-              <div class="project-tags" aria-label="Technologies">
-                <span class="tag tag-soft">CSS</span>
-                <span class="tag tag-soft">Accessibility</span>
-              </div>
-              <div class="project-links">
-                <a class="btn btn-small btn-primary" href="#projects">Live</a>
-                <a class="btn btn-small btn-ghost" href="#projects">Code</a>
-              </div>
-            </article>
-
-            <article class="project-card" role="listitem">
-              <div class="project-top">
-                <h3 class="project-title">Portfolio Gallery</h3>
-                <span class="project-badge project-badge-cool">Personal</span>
-              </div>
-              <p class="project-desc">
-                A simple portfolio template with a polished grid, focus styles,
-                and motion that respects users’ preferences.
-              </p>
-              <div class="project-tags" aria-label="Technologies">
-                <span class="tag tag-soft">HTML</span>
-                <span class="tag tag-soft">CSS</span>
-                <span class="tag tag-soft">Responsive</span>
-              </div>
-              <div class="project-links">
-                <a class="btn btn-small btn-primary" href="#projects">Live</a>
-                <a class="btn btn-small btn-ghost" href="#projects">Code</a>
-              </div>
-            </article>
-
-            <article class="project-card" role="listitem">
-              <div class="project-top">
-                <h3 class="project-title">Docs UI Template</h3>
-                <span class="project-badge project-badge-warm">UX</span>
-              </div>
-              <p class="project-desc">
-                A documentation-style layout with readable line lengths, sticky
-                navigation, and structured content.
-              </p>
-              <div class="project-tags" aria-label="Technologies">
-                <span class="tag tag-soft">Typography</span>
-                <span class="tag tag-soft">CSS</span>
-              </div>
-              <div class="project-links">
-                <a class="btn btn-small btn-primary" href="#projects">Live</a>
-                <a class="btn btn-small btn-ghost" href="#projects">Code</a>
-              </div>
-            </article>
-
-            <article class="project-card" role="listitem">
-              <div class="project-top">
-                <h3 class="project-title">Marketing Cards</h3>
-                <span class="project-badge project-badge-cool">Layout</span>
-              </div>
-              <p class="project-desc">
-                A card-based layout optimized for responsiveness and consistent
-                spacing across breakpoints.
-              </p>
-              <div class="project-tags" aria-label="Technologies">
-                <span class="tag tag-soft">Grid</span>
-                <span class="tag tag-soft">CSS</span>
-              </div>
-              <div class="project-links">
-                <a class="btn btn-small btn-primary" href="#projects">Live</a>
-                <a class="btn btn-small btn-ghost" href="#projects">Code</a>
-              </div>
-            </article>
-
-            <article class="project-card" role="listitem">
-              <div class="project-top">
-                <h3 class="project-title">Accessible Forms</h3>
-                <span class="project-badge">Quality</span>
-              </div>
-              <p class="project-desc">
-                Form components with helpful states, focus outlines, and clear
-                error messaging patterns.
-              </p>
-              <div class="project-tags" aria-label="Technologies">
-                <span class="tag tag-soft">A11y</span>
-                <span class="tag tag-soft">CSS</span>
-              </div>
-              <div class="project-links">
-                <a class="btn btn-small btn-primary" href="#projects">Live</a>
-                <a class="btn btn-small btn-ghost" href="#projects">Code</a>
-              </div>
-            </article>
-
-            <article class="project-card" role="listitem">
-              <h3>Ethio-Scholar AI</h3>
-              <p>
-                An AI-powered platform that collects and updates scholarships
-                for Ethiopian students automatically.
-              </p>
-
-              <a
-                href="https://yeabsiramekonnen160-debug.github.io/ethio-scholar-ai/"
-                target="_blank"
-              >
-                Live Site
-              </a>
-
-              <a
-                href="https://github.com/yeabsiramekonnen160-debug/ethio-scholar-ai"
-                target="_blank"
-              >
-                GitHub Repo
-              </a>
-            </article>
-          </div>
-        </div>
+        <div class="opportunities-grid"></div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p class="footer-text">
-          © <span id="year">2026</span> Yeabsira. Built with HTML &amp; CSS.
-        </p>
-        <a class="footer-link" href="#home">Back to top</a>
-      </div>
-    </footer>
   </body>
+  <script>
+    let allScholarships = [];
+
+    // --- NEW: UNIFIED FILTERING SYSTEM ---
+    let currentSearchText = "";
+    let currentCategory = "all";
+
+    async function initScholarships() {
+      const container = document.querySelector(".opportunities-grid");
+
+      try {
+        const response = await fetch("scholarships.json");
+        if (!response.ok) throw new Error("Network response was not ok");
+
+        allScholarships = await response.json();
+        applyFilters();
+      } catch (error) {
+        console.error("Error loading scholarships:", error);
+        // PROFESSIONAL UPGRADE: Polite error UI
+        if (container) {
+          container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #ef4444;">
+                        <p style="font-size: 1.2rem;">⚠️ <strong>Oops!</strong> We couldn't load the scholarships right now.</p>
+                        <p>Please try refreshing the page.</p>
+                    </div>
+                `;
+        }
+      }
+    }
+
+    function applyFilters() {
+      let filtered = allScholarships;
+
+      // Filter by Text (Search Bar)
+      if (currentSearchText) {
+        filtered = filtered.filter(
+          (s) =>
+            (s.title || "").toLowerCase().includes(currentSearchText) ||
+            (s.deadline || "").toLowerCase().includes(currentSearchText),
+        );
+      }
+
+      // Filter by Category Button
+      if (currentCategory !== "all") {
+        filtered = filtered.filter((s) => {
+          const title = (s.title || "").toLowerCase();
+
+          // Keyword dictionaries for your specific domains
+          if (currentCategory === "engineering") {
+            return (
+              title.includes("engineer") ||
+              title.includes("software") ||
+              title.includes("tech")
+            );
+          }
+          if (currentCategory === "aviation") {
+            return (
+              title.includes("aviation") ||
+              title.includes("airline") ||
+              title.includes("maintenance") ||
+              title.includes("aero")
+            );
+          }
+          if (currentCategory === "health") {
+            return (
+              title.includes("health") ||
+              title.includes("medical") ||
+              title.includes("clinical")
+            );
+          }
+          return true;
+        });
+      }
+
+      displayScholarships(filtered);
+    }
+
+    function displayScholarships(data) {
+      const container = document.querySelector(".opportunities-grid");
+      if (!container) return;
+
+      container.innerHTML = "";
+
+      // POLITE RESPONSE: If no scholarships match the search
+      if (data.length === 0) {
+        container.innerHTML = `
+                <div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 40px; color: #94a3b8;">
+                    <p style="font-size: 1.2rem;">👋 <strong>Hello!</strong> We couldn't find a match for that specific search.</p>
+                    <p>Try searching for "Engineering," "Masters," or browse our featured list below!</p>
+                </div>
+            `;
+        return;
+      }
+
+      data.forEach((item) => {
+        const card = document.createElement("div");
+        card.className = "opportunity-card";
+        card.innerHTML = `
+                <div class="card-content">
+                    <h3>${item.title}</h3>
+                    <p style="margin-top: 10px; margin-bottom: 20px; color: #cbd5e1;">
+                        📅 <strong>Deadline:</strong> ${item.deadline || "Check website for details"}
+                    </p>
+                    <a href="${item.link}" target="_blank" class="view-btn">View Opportunity</a>
+                </div>
+            `;
+        container.appendChild(card);
+      });
+    }
+
+    // 1) Listen to the Search Bar
+    const searchInput = document.getElementById("search-query");
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        currentSearchText = e.target.value.toLowerCase();
+        applyFilters();
+      });
+    }
+
+    // 2) Listen to the Category Buttons
+    const categoryButtons = document.querySelectorAll(
+      ".filter-categories .filter-btn",
+    );
+    categoryButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        // Remove 'active' styling from all buttons, add to the clicked one
+        categoryButtons.forEach((b) => b.classList.remove("active"));
+        e.currentTarget.classList.add("active");
+
+        // Update the category state and run the filter
+        currentCategory = e.currentTarget.getAttribute("data-category");
+        applyFilters();
+      });
+    });
+
+    // Start everything when the page opens
+    window.onload = initScholarships;
+  </script>
 </html>
