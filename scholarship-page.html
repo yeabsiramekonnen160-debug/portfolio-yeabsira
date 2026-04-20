@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ethio-Scholar AI — scholarships and jobs aggregated for Ethiopian students."
+    />
+    <title>Ethio-Scholar AI | Scholarship Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar" aria-label="Primary">
+        <a
+          class="logo navbar-brand"
+          href="index.html"
+          aria-label="Ethio-Scholar AI home"
+        >
+          <span class="logo-mark" aria-hidden="true">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="32" height="32" rx="8" class="logo-shape" />
+              <path
+                d="M9 16.5L14 21.5L23 10.5"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="logo-text"
+            >Ethio-Scholar <span class="logo-ai">AI</span></span
+          >
+        </a>
+
+        <ul class="navbar-links">
+          <li>
+            <a class="navbar-link" href="#opportunities">Opportunities</a>
+          </li>
+          <li>
+            <a class="navbar-link" href="#">Saved</a>
+          </li>
+          <li>
+            <a class="navbar-link" href="about.html">About</a>
+          </li>
+        </ul>
+
+        <form
+          class="search-form navbar-search"
+          role="search"
+          aria-label="Search opportunities"
+        >
+          <label class="visually-hidden" for="search-query"
+            >Search scholarships and jobs</label
+          >
+          <input
+            id="search-query"
+            class="search-input"
+            type="search"
+            name="q"
+            placeholder="Search scholarships, internships, jobs..."
+            autocomplete="off"
+          />
+          <button type="submit" class="search-submit">Search</button>
+        </form>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-inner">
+          <p class="hero-eyebrow">Built for Ethiopian students</p>
+          <h1 id="hero-heading">Your Future, Managed by AI.</h1>
+          <p class="hero-lede">
+            Discover curated scholarships and roles matched to your field - one
+            place to plan your next step.
+          </p>
+        </div>
+      </section>
+
+      <section class="filters-section" aria-labelledby="filters-heading">
+        <h2 id="filters-heading" class="section-title">Filter by category</h2>
+        <div class="filter-categories">
+          <button class="filter-btn active" data-category="all">All</button>
+          <button class="filter-btn" data-category="engineering">
+            Engineering
+          </button>
+          <button class="filter-btn" data-category="aviation">Aviation</button>
+          <button class="filter-btn" data-category="health">Health</button>
+        </div>
+      </section>
+
+      <section id="opportunities">
+        <h2>FEATURED OPPORTUNITIES</h2>
+        <div class="opportunities-grid"></div>
+      </section>
+    </main>
+
+    <script>
+      let allScholarships = [];
+      let currentSearchText = "";
+      let currentCategory = "all";
+
+      async function initScholarships() {
+        const container = document.querySelector(".opportunities-grid");
+
+        try {
+          const response = await fetch("scholarships.json");
+          if (!response.ok) throw new Error("Network response was not ok");
+
+          allScholarships = await response.json();
+          applyFilters();
+        } catch (error) {
+          console.error("Error loading scholarships:", error);
+          if (container) {
+            container.innerHTML = `
+              <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #ef4444;">
+                <p style="font-size: 1.2rem;">⚠️ <strong>Oops!</strong> We couldn't load the scholarships right now.</p>
+                <p>Please try refreshing the page.</p>
+              </div>
+            `;
+          }
+        }
+      }
+
+      function applyFilters() {
+        let filtered = allScholarships;
+
+        if (currentSearchText) {
+          filtered = filtered.filter(
+            (s) =>
+              (s.title || "").toLowerCase().includes(currentSearchText) ||
+              (s.deadline || "").toLowerCase().includes(currentSearchText),
+          );
+        }
+
+        if (currentCategory !== "all") {
+          filtered = filtered.filter(
+            (s) => (s.category || "other").toLowerCase() === currentCategory,
+          );
+        }
+
+        displayScholarships(filtered);
+      }
+
+      function displayScholarships(data) {
+        const container = document.querySelector(".opportunities-grid");
+        if (!container) return;
+
+        container.innerHTML = "";
+
+        if (data.length === 0) {
+          container.innerHTML = `
+            <div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 40px; color: #94a3b8;">
+              <p style="font-size: 1.2rem;">👋 <strong>Hello!</strong> We couldn't find a match for that specific search.</p>
+              <p>Try searching for "Engineering," "Masters," or browse our featured list below!</p>
+            </div>
+          `;
+          return;
+        }
+
+        data.forEach((item) => {
+          const card = document.createElement("div");
+          card.className = "opportunity-card";
+          card.innerHTML = `
+            <div class="card-content">
+              <h3>${item.title}</h3>
+              <p style="margin-top: 10px; margin-bottom: 20px; color: #cbd5e1;">
+                📅 <strong>Deadline:</strong> ${item.deadline || "Check website for details"}
+              </p>
+              <a href="${item.link}" target="_blank" class="view-btn">View Opportunity</a>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      const searchInput = document.getElementById("search-query");
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          currentSearchText = e.target.value.toLowerCase();
+          applyFilters();
+        });
+      }
+
+      const categoryButtons = document.querySelectorAll(
+        ".filter-categories .filter-btn",
+      );
+      categoryButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          categoryButtons.forEach((b) => b.classList.remove("active"));
+          e.currentTarget.classList.add("active");
+          currentCategory = e.currentTarget.getAttribute("data-category");
+          applyFilters();
+        });
+      });
+
+      window.onload = initScholarships;
+    </script>
+  </body>
+</html>
